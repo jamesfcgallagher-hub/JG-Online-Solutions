@@ -123,13 +123,13 @@ function animateGrowthCounter() {
   const el = document.getElementById('growthCounter');
   if (!el || el.dataset.done) return;
   el.dataset.done = '1';
-  const target = 247;
+  const target = 2.4;
   const duration = 2200;
   const start = performance.now();
   function tick(now) {
     const p = Math.min((now - start) / duration, 1);
     const ease = 1 - Math.pow(1 - p, 3);
-    el.textContent = Math.round(ease * target);
+    el.textContent = (ease * target).toFixed(1);
     if (p < 1) requestAnimationFrame(tick);
   }
   requestAnimationFrame(tick);

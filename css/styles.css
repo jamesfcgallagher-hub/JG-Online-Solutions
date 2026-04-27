@@ -647,8 +647,9 @@ body {
 
 .growth-chart-header {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
+  gap: 16px;
   padding: 24px 28px 20px;
 }
 
@@ -666,8 +667,10 @@ body {
 
 .growth-label {
   font-size: 13px;
-  color: var(--text-subtle);
+  color: var(--text-muted);
   font-weight: 500;
+  line-height: 1.5;
+  max-width: 280px;
 }
 
 .growth-live {
