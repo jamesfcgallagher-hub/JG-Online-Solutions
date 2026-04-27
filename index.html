@@ -204,7 +204,32 @@
                 <span class="growth-pulse"></span> Live
               </div>
             </div>
-            <canvas id="growthCanvas"></canvas>
+            <div class="chart-wrap">
+              <svg class="chart-svg" viewBox="0 0 400 180" preserveAspectRatio="none" aria-hidden="true">
+                <defs>
+                  <linearGradient id="lineGrad" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.25"/>
+                    <stop offset="60%" stop-color="#8b5cf6"/>
+                    <stop offset="100%" stop-color="#06b6d4"/>
+                  </linearGradient>
+                  <linearGradient id="fillGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.28"/>
+                    <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/>
+                  </linearGradient>
+                </defs>
+                <line x1="0" y1="45"  x2="400" y2="45"  stroke="rgba(255,255,255,0.05)"/>
+                <line x1="0" y1="90"  x2="400" y2="90"  stroke="rgba(255,255,255,0.05)"/>
+                <line x1="0" y1="135" x2="400" y2="135" stroke="rgba(255,255,255,0.05)"/>
+                <path class="chart-fill" d="M 0,160 L 30,152 L 70,148 L 110,138 L 140,142 L 180,126 L 220,116 L 260,96 L 300,80 L 340,52 L 388,22 L 388,180 L 0,180 Z"/>
+                <path class="chart-line" d="M 0,160 L 30,152 L 70,148 L 110,138 L 140,142 L 180,126 L 220,116 L 260,96 L 300,80 L 340,52 L 388,22"/>
+                <path class="chart-pulse" d="M 0,160 L 30,152 L 70,148 L 110,138 L 140,142 L 180,126 L 220,116 L 260,96 L 300,80 L 340,52 L 388,22"/>
+                <g class="chart-tip">
+                  <circle cx="388" cy="22" r="11" fill="rgba(6,182,212,0.18)"/>
+                  <circle cx="388" cy="22" r="4.5" fill="#06b6d4"/>
+                  <polygon points="388,8 396,18 380,18" fill="#06b6d4"/>
+                </g>
+              </svg>
+            </div>
           </div>
         </div>
       </div>

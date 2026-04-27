@@ -117,6 +117,25 @@ document.querySelectorAll('.nav-links a, .nav-cta').forEach(link => {
 });
 
 /* ============================================
+   GROWTH COUNTER
+   ============================================ */
+function animateGrowthCounter() {
+  const el = document.getElementById('growthCounter');
+  if (!el || el.dataset.done) return;
+  el.dataset.done = '1';
+  const target = 247;
+  const duration = 2200;
+  const start = performance.now();
+  function tick(now) {
+    const p = Math.min((now - start) / duration, 1);
+    const ease = 1 - Math.pow(1 - p, 3);
+    el.textContent = Math.round(ease * target);
+    if (p < 1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+
+/* ============================================
    SCROLL REVEAL
    ============================================ */
 const revealObserver = new IntersectionObserver((entries) => {
@@ -125,6 +144,9 @@ const revealObserver = new IntersectionObserver((entries) => {
     const delay = parseInt(entry.target.dataset.delay || '0', 10);
     setTimeout(() => {
       entry.target.classList.add('visible');
+      if (entry.target.classList.contains('features-visual')) {
+        setTimeout(animateGrowthCounter, 400);
+      }
     }, delay);
     revealObserver.unobserve(entry.target);
   });
@@ -132,173 +154,19 @@ const revealObserver = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-/* ============================================
-   GROWTH CHART CANVAS
-   ============================================ */
-(function initGrowthChart() {
-  const canvas = document.getElementById('growthCanvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-
-  function resize() {
-    canvas.width = canvas.offsetWidth * window.devicePixelRatio;
-    canvas.height = canvas.offsetHeight * window.devicePixelRatio;
-    ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
-  }
-
-  const W = () => canvas.offsetWidth;
-  const H = () => canvas.offsetHeight;
-
-  const points = [];
-  const speed = 1.2;
-  let baseY;
-  let started = false;
-
-  function seedPoints() {
-    points.length = 0;
-    baseY = H() * 0.82;
-    for (let x = 0; x <= W() + 60; x += 3) {
-      baseY += (Math.random() - 0.52) * 2.8;
-      baseY = Math.max(H() * 0.12, Math.min(H() * 0.88, baseY));
-      points.push({ x, y: baseY });
+// Fallback in case the observer doesn't fire (e.g. tall viewport)
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    const fv = document.querySelector('.features-visual');
+    if (fv && !fv.classList.contains('visible')) {
+      const rect = fv.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        fv.classList.add('visible');
+        setTimeout(animateGrowthCounter, 400);
+      }
     }
-  }
-
-  function smoothPath(pts) {
-    if (pts.length < 2) return;
-    ctx.moveTo(pts[0].x, pts[0].y);
-    for (let i = 1; i < pts.length - 1; i++) {
-      const mx = (pts[i].x + pts[i + 1].x) / 2;
-      const my = (pts[i].y + pts[i + 1].y) / 2;
-      ctx.quadraticCurveTo(pts[i].x, pts[i].y, mx, my);
-    }
-    ctx.lineTo(pts[pts.length - 1].x, pts[pts.length - 1].y);
-  }
-
-  function drawArrow(x, y, prevX, prevY) {
-    const angle = Math.atan2(y - prevY, x - prevX);
-    const len = 12;
-    const spread = 0.45;
-    ctx.beginPath();
-    ctx.moveTo(x, y);
-    ctx.lineTo(x - len * Math.cos(angle - spread), y - len * Math.sin(angle - spread));
-    ctx.lineTo(x - len * Math.cos(angle + spread), y - len * Math.sin(angle + spread));
-    ctx.closePath();
-    ctx.fillStyle = '#06b6d4';
-    ctx.fill();
-  }
-
-  function frame() {
-    const w = W(), h = H();
-    ctx.clearRect(0, 0, w, h);
-
-    // Scroll points left and add new trending-up point on right
-    points.forEach(p => p.x -= speed);
-    const last = points[points.length - 1];
-    let ny = last.y + (Math.random() - 0.53) * 3;
-    ny = Math.max(h * 0.12, Math.min(h * 0.88, ny));
-    points.push({ x: last.x + 3, y: ny });
-    while (points[0].x < -10) points.shift();
-
-    const vis = points.filter(p => p.x >= 0 && p.x <= w + 10);
-    if (vis.length < 2) { requestAnimationFrame(frame); return; }
-
-    // Subtle grid
-    ctx.strokeStyle = 'rgba(255,255,255,0.04)';
-    ctx.lineWidth = 1;
-    [0.25, 0.5, 0.75].forEach(r => {
-      ctx.beginPath();
-      ctx.moveTo(0, h * r);
-      ctx.lineTo(w, h * r);
-      ctx.stroke();
-    });
-
-    // Fill gradient under line
-    const fillGrad = ctx.createLinearGradient(0, 0, 0, h);
-    fillGrad.addColorStop(0, 'rgba(139,92,246,0.22)');
-    fillGrad.addColorStop(1, 'rgba(139,92,246,0)');
-    ctx.beginPath();
-    smoothPath(vis);
-    ctx.lineTo(vis[vis.length - 1].x, h);
-    ctx.lineTo(vis[0].x, h);
-    ctx.closePath();
-    ctx.fillStyle = fillGrad;
-    ctx.fill();
-
-    // Glowing line
-    const lineGrad = ctx.createLinearGradient(0, 0, w, 0);
-    lineGrad.addColorStop(0, 'rgba(139,92,246,0.2)');
-    lineGrad.addColorStop(0.6, '#8b5cf6');
-    lineGrad.addColorStop(1, '#06b6d4');
-
-    ctx.shadowColor = '#8b5cf6';
-    ctx.shadowBlur = 10;
-    ctx.beginPath();
-    smoothPath(vis);
-    ctx.strokeStyle = lineGrad;
-    ctx.lineWidth = 2.5;
-    ctx.lineJoin = 'round';
-    ctx.stroke();
-    ctx.shadowBlur = 0;
-
-    // Arrowhead at leading point
-    const tip = vis[vis.length - 1];
-    const prev = vis[vis.length - 3] || vis[vis.length - 2];
-    drawArrow(tip.x, tip.y, prev.x, prev.y);
-
-    // Glow halo around tip
-    const glow = ctx.createRadialGradient(tip.x, tip.y, 0, tip.x, tip.y, 16);
-    glow.addColorStop(0, 'rgba(6,182,212,0.4)');
-    glow.addColorStop(1, 'rgba(6,182,212,0)');
-    ctx.beginPath();
-    ctx.arc(tip.x, tip.y, 16, 0, Math.PI * 2);
-    ctx.fillStyle = glow;
-    ctx.fill();
-
-    requestAnimationFrame(frame);
-  }
-
-  // Start only when section scrolls into view
-  const chartObserver = new IntersectionObserver(entries => {
-    if (entries[0].isIntersecting && !started) {
-      started = true;
-      resize();
-      seedPoints();
-      frame();
-      chartObserver.disconnect();
-    }
-  }, { threshold: 0.2 });
-
-  chartObserver.observe(canvas);
-  window.addEventListener('resize', () => { if (started) { resize(); seedPoints(); } });
-})();
-
-/* ============================================
-   GROWTH COUNTER ANIMATION
-   ============================================ */
-(function initCounter() {
-  const el = document.getElementById('growthCounter');
-  if (!el) return;
-  const target = 247;
-  let started = false;
-
-  const obs = new IntersectionObserver(entries => {
-    if (!entries[0].isIntersecting || started) return;
-    started = true;
-    const duration = 1800;
-    const start = performance.now();
-    function tick(now) {
-      const p = Math.min((now - start) / duration, 1);
-      const ease = 1 - Math.pow(1 - p, 3);
-      el.textContent = Math.round(ease * target);
-      if (p < 1) requestAnimationFrame(tick);
-    }
-    requestAnimationFrame(tick);
-    obs.disconnect();
-  }, { threshold: 0.3 });
-
-  obs.observe(el);
-})();
+  }, 600);
+});
 
 /* ============================================
    SMOOTH SCROLL FOR ANCHOR LINKS
