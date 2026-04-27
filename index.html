@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JG Online Solutions | Web Design · AI · Digital Marketing Sydney</title>
+  <meta name="description" content="JG Online Solutions – Sydney's premium digital agency. Web design, AI integration, social media management, SEO and marketing.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav-container">
+      <a href="#home" class="nav-logo">
+        JG <span class="logo-accent">Online Solutions</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="#contact" class="btn btn-primary nav-cta">Get Started</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="hero-bg">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+      <canvas id="particles"></canvas>
+    </div>
+    <div class="container hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Based in Sydney, Australia
+      </div>
+      <h1 class="hero-title">
+        Elevate Your Brand<br>
+        <span class="gradient-text">in the Digital Age</span>
+      </h1>
+      <p class="hero-subtitle">
+        We build stunning websites, integrate cutting-edge AI, and craft digital strategies that drive real growth for Sydney businesses.
+      </p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-primary btn-lg">Start a Project</a>
+        <a href="#services" class="btn btn-ghost btn-lg">Explore Services</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-number">50+</span>
+          <span class="stat-label">Projects Delivered</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-number">100%</span>
+          <span class="stat-label">Client Satisfaction</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-number">5+</span>
+          <span class="stat-label">Years Experience</span>
+        </div>
+      </div>
+    </div>
+    <a href="#services" class="hero-scroll" aria-label="Scroll down">
+      <div class="scroll-dot"></div>
+    </a>
+  </section>
+
+  <!-- Services -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">What We Do</span>
+        <h2 class="section-title">Services Built for <span class="gradient-text">Modern Business</span></h2>
+        <p class="section-subtitle">From pixel-perfect design to intelligent automation, we cover every dimension of your digital presence.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal" data-delay="0">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2"/>
+              <path d="M8 21h8M12 17v4"/>
+            </svg>
+          </div>
+          <h3>Web Design &amp; Development</h3>
+          <p>Beautiful, fast and responsive websites that convert visitors into customers. Built with the latest technologies.</p>
+          <span class="card-arrow">→</span>
+        </div>
+        <div class="service-card reveal" data-delay="100">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="9" width="6" height="6"/>
+              <path d="M9 1v4M15 1v4M9 19v4M15 19v4M1 9h4M19 9h4M1 15h4M19 15h4"/>
+            </svg>
+          </div>
+          <h3>AI Integration</h3>
+          <p>Supercharge your business with AI-powered chatbots, automation, and intelligent workflows tailored to your needs.</p>
+          <span class="card-arrow">→</span>
+        </div>
+        <div class="service-card reveal" data-delay="200">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="18" cy="5" r="3"/>
+              <circle cx="6" cy="12" r="3"/>
+              <circle cx="18" cy="19" r="3"/>
+              <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+              <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+            </svg>
+          </div>
+          <h3>Social Media Management</h3>
+          <p>Strategic content creation, community management and growth strategies that build your brand and audience.</p>
+          <span class="card-arrow">→</span>
+        </div>
+        <div class="service-card reveal" data-delay="300">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"/>
+              <path d="m21 21-4.35-4.35M8 11h6M11 8v6"/>
+            </svg>
+          </div>
+          <h3>Search Engine Optimisation</h3>
+          <p>Data-driven SEO strategies that improve your Google rankings, drive organic traffic and grow your revenue.</p>
+          <span class="card-arrow">→</span>
+        </div>
+        <div class="service-card reveal" data-delay="400">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+              <polyline points="17 6 23 6 23 12"/>
+            </svg>
+          </div>
+          <h3>Digital Marketing</h3>
+          <p>Full-funnel marketing campaigns across paid ads, email and content that deliver measurable ROI.</p>
+          <span class="card-arrow">→</span>
+        </div>
+        <div class="service-card service-card-cta reveal" data-delay="500">
+          <h3>Ready to Grow?</h3>
+          <p>Let's talk about how we can take your business to the next level.</p>
+          <a href="#contact" class="btn btn-primary">Get a Free Consultation</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About / Why Us -->
+  <section class="features" id="about">
+    <div class="container">
+      <div class="features-inner">
+        <div class="features-text reveal">
+          <span class="section-tag">Why JG Online Solutions</span>
+          <h2 class="section-title">We Don't Just Build Websites.<br><span class="gradient-text">We Build Growth.</span></h2>
+          <p class="section-subtitle">Based in Sydney and working with businesses across Australia, we combine technical expertise with creative thinking to deliver results that matter.</p>
+          <div class="feature-list">
+            <div class="feature-item">
+              <div class="feature-check">✓</div>
+              <div>
+                <strong>Results-Driven Approach</strong>
+                <p>Every decision is backed by data and focused on your business outcomes.</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-check">✓</div>
+              <div>
+                <strong>End-to-End Solutions</strong>
+                <p>From strategy to execution, we handle everything so you can focus on your business.</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-check">✓</div>
+              <div>
+                <strong>Cutting-Edge Technology</strong>
+                <p>We use the latest AI tools to keep you ahead of the competition.</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-check">✓</div>
+              <div>
+                <strong>Sydney Local Expertise</strong>
+                <p>We understand the local market and what it takes to win in Sydney.</p>
+              </div>
+            </div>
+          </div>
+          <a href="#contact" class="btn btn-primary">Work With Us</a>
+        </div>
+        <div class="features-visual reveal">
+          <div class="visual-card">
+            <div class="visual-card-header">
+              <div class="vc-dots">
+                <span class="vc-dot red"></span>
+                <span class="vc-dot yellow"></span>
+                <span class="vc-dot green"></span>
+              </div>
+              <span class="vc-title">Performance Dashboard</span>
+            </div>
+            <div class="visual-card-body">
+              <div class="metric-row">
+                <span class="metric-label">Organic Traffic</span>
+                <div class="metric-bar-track">
+                  <div class="metric-fill" style="--w: 87%"></div>
+                </div>
+                <span class="metric-val up">↑ 87%</span>
+              </div>
+              <div class="metric-row">
+                <span class="metric-label">Conversion Rate</span>
+                <div class="metric-bar-track">
+                  <div class="metric-fill" style="--w: 64%"></div>
+                </div>
+                <span class="metric-val up">↑ 64%</span>
+              </div>
+              <div class="metric-row">
+                <span class="metric-label">Brand Reach</span>
+                <div class="metric-bar-track">
+                  <div class="metric-fill" style="--w: 95%"></div>
+                </div>
+                <span class="metric-val up">↑ 95%</span>
+              </div>
+              <div class="metric-row">
+                <span class="metric-label">Revenue Growth</span>
+                <div class="metric-bar-track">
+                  <div class="metric-fill" style="--w: 73%"></div>
+                </div>
+                <span class="metric-val up">↑ 73%</span>
+              </div>
+            </div>
+            <div class="visual-card-footer">
+              <span class="pulse-dot"></span>
+              Live tracking enabled
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="process" id="process">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">How We Work</span>
+        <h2 class="section-title">A Simple, <span class="gradient-text">Proven Process</span></h2>
+        <p class="section-subtitle">We make working with us effortless, transparent and effective from day one.</p>
+      </div>
+      <div class="process-steps">
+        <div class="process-step reveal" data-delay="0">
+          <div class="step-number">01</div>
+          <h3>Discovery</h3>
+          <p>We dive deep into your business, goals, and audience to understand exactly what success looks like for you.</p>
+        </div>
+        <div class="process-connector"></div>
+        <div class="process-step reveal" data-delay="150">
+          <div class="step-number">02</div>
+          <h3>Strategy</h3>
+          <p>We craft a tailored digital strategy covering all channels and tools that will move the needle for your business.</p>
+        </div>
+        <div class="process-connector"></div>
+        <div class="process-step reveal" data-delay="300">
+          <div class="step-number">03</div>
+          <h3>Execution</h3>
+          <p>Our team builds, launches and manages everything with precision, keeping you informed every step of the way.</p>
+        </div>
+        <div class="process-connector"></div>
+        <div class="process-step reveal" data-delay="450">
+          <div class="step-number">04</div>
+          <h3>Optimise &amp; Grow</h3>
+          <p>We continuously analyse performance data and refine our approach to maximise your results over time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact / CTA -->
+  <section class="contact-section" id="contact">
+    <div class="contact-bg">
+      <div class="orb orb-c1"></div>
+      <div class="orb orb-c2"></div>
+    </div>
+    <div class="container">
+      <div class="contact-inner reveal">
+        <span class="section-tag">Get In Touch</span>
+        <h2 class="section-title">Let's Build Something <span class="gradient-text">Amazing Together</span></h2>
+        <p class="section-subtitle">Ready to take your business to the next level? Drop us a message and we'll get back to you within 24 hours.</p>
+        <form class="contact-form" id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <input type="text" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+              <input type="email" placeholder="Email Address" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="text" placeholder="Company / Business Name">
+          </div>
+          <div class="form-group">
+            <select>
+              <option value="">Select a Service</option>
+              <option>Web Design &amp; Development</option>
+              <option>AI Integration</option>
+              <option>Social Media Management</option>
+              <option>SEO</option>
+              <option>Digital Marketing</option>
+              <option>Multiple Services</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <textarea placeholder="Tell us about your project..." rows="4"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg btn-full">Send Message →</button>
+          <div class="form-success" id="formSuccess">
+            <span>✓</span> Thanks! We'll be in touch within 24 hours.
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="#home" class="nav-logo">
+            JG <span class="logo-accent">Online Solutions</span>
+          </a>
+          <p>Sydney's trusted digital partner for web design, AI integration, social media, SEO and marketing.</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h4>Services</h4>
+            <ul>
+              <li><a href="#services">Web Design</a></li>
+              <li><a href="#services">AI Integration</a></li>
+              <li><a href="#services">Social Media</a></li>
+              <li><a href="#services">SEO</a></li>
+              <li><a href="#services">Digital Marketing</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="#about">About Us</a></li>
+              <li><a href="#process">Our Process</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Contact</h4>
+            <ul>
+              <li>Sydney, Australia</li>
+              <li><a href="mailto:hello@jgonlinesolutions.com.au">hello@jgonlinesolutions.com.au</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 JG Online Solutions. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
