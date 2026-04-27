@@ -194,49 +194,17 @@
           <a href="#contact" class="btn btn-primary">Work With Us</a>
         </div>
         <div class="features-visual reveal">
-          <div class="visual-card">
-            <div class="visual-card-header">
-              <div class="vc-dots">
-                <span class="vc-dot red"></span>
-                <span class="vc-dot yellow"></span>
-                <span class="vc-dot green"></span>
+          <div class="growth-chart">
+            <div class="growth-chart-header">
+              <div>
+                <div class="growth-number">↑ <span id="growthCounter">0</span>%</div>
+                <div class="growth-label">Average client growth</div>
               </div>
-              <span class="vc-title">Performance Dashboard</span>
-            </div>
-            <div class="visual-card-body">
-              <div class="metric-row">
-                <span class="metric-label">Organic Traffic</span>
-                <div class="metric-bar-track">
-                  <div class="metric-fill" style="--w: 87%"></div>
-                </div>
-                <span class="metric-val up">↑ 87%</span>
-              </div>
-              <div class="metric-row">
-                <span class="metric-label">Conversion Rate</span>
-                <div class="metric-bar-track">
-                  <div class="metric-fill" style="--w: 64%"></div>
-                </div>
-                <span class="metric-val up">↑ 64%</span>
-              </div>
-              <div class="metric-row">
-                <span class="metric-label">Brand Reach</span>
-                <div class="metric-bar-track">
-                  <div class="metric-fill" style="--w: 95%"></div>
-                </div>
-                <span class="metric-val up">↑ 95%</span>
-              </div>
-              <div class="metric-row">
-                <span class="metric-label">Revenue Growth</span>
-                <div class="metric-bar-track">
-                  <div class="metric-fill" style="--w: 73%"></div>
-                </div>
-                <span class="metric-val up">↑ 73%</span>
+              <div class="growth-live">
+                <span class="growth-pulse"></span> Live
               </div>
             </div>
-            <div class="visual-card-footer">
-              <span class="pulse-dot"></span>
-              Live tracking enabled
-            </div>
+            <canvas id="growthCanvas"></canvas>
           </div>
         </div>
       </div>
