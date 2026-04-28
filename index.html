@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
 </head>
 <body>
 
@@ -283,20 +284,20 @@
         <span class="section-tag">Get In Touch</span>
         <h2 class="section-title">Let's Build Something <span class="gradient-text">Amazing Together</span></h2>
         <p class="section-subtitle">Ready to take your business to the next level? Drop us a message and we'll get back to you within 24 hours.</p>
-        <form class="contact-form" id="contactForm">
+        <form class="contact-form" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
           <div class="form-row">
             <div class="form-group">
-              <input type="text" placeholder="Your Name" required>
+              <input type="text" name="name" placeholder="Your Name" required>
             </div>
             <div class="form-group">
-              <input type="email" placeholder="Email Address" required>
+              <input type="email" name="email" placeholder="Email Address" required>
             </div>
           </div>
           <div class="form-group">
-            <input type="text" placeholder="Company / Business Name">
+            <input type="text" name="company" placeholder="Company / Business Name">
           </div>
           <div class="form-group">
-            <select>
+            <select name="service">
               <option value="">Select a Service</option>
               <option>Web Design &amp; Development</option>
               <option>AI Integration</option>
@@ -307,7 +308,7 @@
             </select>
           </div>
           <div class="form-group">
-            <textarea placeholder="Tell us about your project..." rows="4"></textarea>
+            <textarea name="message" placeholder="Tell us about your project..." rows="4"></textarea>
           </div>
           <button type="submit" class="btn btn-primary btn-lg btn-full">Send Message →</button>
           <div class="form-success" id="formSuccess">

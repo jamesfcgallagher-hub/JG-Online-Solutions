@@ -188,20 +188,32 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 const contactForm = document.getElementById('contactForm');
 const formSuccess = document.getElementById('formSuccess');
 
-contactForm.addEventListener('submit', e => {
+contactForm.addEventListener('submit', async e => {
   e.preventDefault();
   const btn = contactForm.querySelector('button[type="submit"]');
   btn.textContent = 'Sending…';
   btn.disabled = true;
 
-  // Simulate submission — connect a real endpoint (e.g. Formspree) here
-  setTimeout(() => {
-    contactForm.reset();
-    btn.textContent = 'Send Message →';
-    btn.disabled = false;
-    formSuccess.classList.add('show');
-    setTimeout(() => formSuccess.classList.remove('show'), 5000);
-  }, 1000);
+  try {
+    const response = await fetch(contactForm.action, {
+      method: 'POST',
+      body: new FormData(contactForm),
+      headers: { Accept: 'application/json' }
+    });
+
+    if (response.ok) {
+      contactForm.reset();
+      formSuccess.classList.add('show');
+      setTimeout(() => formSuccess.classList.remove('show'), 5000);
+    } else {
+      alert('Something went wrong. Please email us directly at jgonlinesolutionsnsw@gmail.com');
+    }
+  } catch {
+    alert('Something went wrong. Please email us directly at jgonlinesolutionsnsw@gmail.com');
+  }
+
+  btn.textContent = 'Send Message →';
+  btn.disabled = false;
 });
 
 /* ============================================
