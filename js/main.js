@@ -195,19 +195,14 @@ contactForm.addEventListener('submit', async e => {
   btn.disabled = true;
 
   try {
-    const response = await fetch(contactForm.action, {
+    await fetch(contactForm.action, {
       method: 'POST',
-      body: new FormData(contactForm),
-      headers: { Accept: 'application/json' }
+      mode: 'no-cors',
+      body: new FormData(contactForm)
     });
-
-    if (response.ok) {
-      contactForm.reset();
-      formSuccess.classList.add('show');
-      setTimeout(() => formSuccess.classList.remove('show'), 5000);
-    } else {
-      alert('Something went wrong. Please email us directly at jgonlinesolutionsnsw@gmail.com');
-    }
+    contactForm.reset();
+    formSuccess.classList.add('show');
+    setTimeout(() => formSuccess.classList.remove('show'), 5000);
   } catch {
     alert('Something went wrong. Please email us directly at jgonlinesolutionsnsw@gmail.com');
   }
